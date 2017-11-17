@@ -1,0 +1,1 @@
+docker run -ti --rm -v "//c/visv/docker/eclipse/repo:/root/repo" -v "//c/visv/docker/eclipse/workspace:/root/workspace" -e DISPLAY=%1:0.0 eclipse
