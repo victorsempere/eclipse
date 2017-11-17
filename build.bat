@@ -1,1 +1,1 @@
-docker build -t visualstudiocode -f Dockerfile_vsCode .
+docker build -t eclipse .

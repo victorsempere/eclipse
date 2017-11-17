@@ -1,1 +1,1 @@
-docker run -ti --rm -v angularrepo:/home/root/repo -e DISPLAY=192.168.1.181:0.0 visualstudiocode /bin/bash
+docker run -ti --rm -v "//c/visv/docker/eclipse/repo:/root/repo" -v "//c/visv/docker/eclipse/workspace:/root/workspace" -e DISPLAY=%1:0.0 eclipse
