@@ -4,6 +4,7 @@ FROM ubuntu:17.10
 RUN echo "Install X11 support" && \
 apt-get update && \
 apt-get install -y xorg openbox && \
+apt autoremove -y && \
 rm -rf /var/lib/apt/lists/* 
 
 RUN echo "Install Oracle Java 1.8" && \
@@ -16,9 +17,8 @@ echo "Installing Java..." && \
 echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
 echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections && \
 apt-get install -y oracle-java8-installer && \
-echo "Removing installed packages" && \
-apt-get remove -y software-properties-common python-software-properties debconf-utils oracle-java8-installer && \
-echo "Cleaning apt-get fetched temporal files" && \
+echo "Cleaning unneeded packages" && \
+apt autoremove -y && \
 rm -rf /var/lib/apt/lists/* 
 
 # Line to install Oxygen
@@ -29,7 +29,6 @@ apt-get install -y --no-install-recommends wget && \
 wget http://download.springsource.com/release/STS/3.9.1.RELEASE/dist/e4.7/spring-tool-suite-3.9.1.RELEASE-e4.7.1a-linux-gtk-x86_64.tar.gz -O ~/eclipse.tar.gz && \
 tar zxvf ~/eclipse.tar.gz && \
 rm ~/eclipse.tar.gz && \
-apt-get remove -y wget && \
 rm -rf /var/lib/apt/lists/*
 
 
