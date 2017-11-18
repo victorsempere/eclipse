@@ -13,6 +13,7 @@ add-apt-repository ppa:webupd8team/java && \
 apt-get update && \
 apt-get install -y debconf-utils && \
 echo "Installing Java..." && \
+echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
 echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections && \
 apt-get install -y oracle-java8-installer && \
 echo "Removing installed packages" && \
@@ -25,8 +26,11 @@ rm -rf /var/lib/apt/lists/*
 
 RUN echo "Install Eclipse STS based on Oxygen (4.7.1a)" && \
 apt-get install -y --no-install-recommends wget && \
+wget http://download.springsource.com/release/STS/3.9.1.RELEASE/dist/e4.7/spring-tool-suite-3.9.1.RELEASE-e4.7.1a-linux-gtk-x86_64.tar.gz -O ~/eclipse.tar.gz && \
 tar zxvf ~/eclipse.tar.gz && \
 rm ~/eclipse.tar.gz && \
+apt-get remove -y wget && \
+rm -rf /var/lib/apt/lists/*
 
 
 # Adjust eclipse configuration
