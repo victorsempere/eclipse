@@ -1,1 +1,1 @@
-docker run -ti --rm -v eclipseRepo:/root/repo -v eclipseWorkspace:/root/eclipse-workspace -e DISPLAY=%1:0.0 eclipse
+docker run -ti --rm -v %2:/root/repo -v %3:/root/eclipse-workspace -e DISPLAY=%1:0.0 eclipse /bin/bash
